@@ -34,6 +34,13 @@ class GuestBook
 
     public function save()
     {
-        file_put_contents(__DIR__ . '/../gb.data',$this->records);
+        $ret = [];
+        foreach ($this->records as $record) {
+            $ret[] = $record->getMessage();
+            //var_dump($record->getMessage());
+        }
+        file_put_contents(__DIR__ . '/../gb.data',implode(PHP_EOL, $ret));
+        header('Location: /');
+        exit();
     }
 }
