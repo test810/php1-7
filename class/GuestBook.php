@@ -11,13 +11,12 @@ class GuestBook
     public function __construct($path)
     {
         $this->path = file($path, FILE_IGNORE_NEW_LINES);
-        $this->loadAllRecords($this->path);
     }
 
-    protected function loadAllRecords($path)
+    public function loadAllRecords()
     {
         $records = [];
-        foreach ($path as $line) {
+        foreach ($this->path as $line) {
             $records[] = new GuestBookRecord($line);
         }
         $this->records = $records;
