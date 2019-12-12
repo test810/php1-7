@@ -6,12 +6,13 @@ class GuestBook
 {
 
     protected $records = [];
-    private $path = __DIR__ . '/../gb.data';
-    private $data = '';
+    private $path = '';
+    private $data = [];
 
-    public function __construct()
+    public function __construct($path)
     {
-        $this->data = file($this->path, FILE_IGNORE_NEW_LINES);
+        $this->path = $path;
+        $this->data = file($path, FILE_IGNORE_NEW_LINES);
     }
 
     public function loadAllRecords()
