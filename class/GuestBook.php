@@ -6,17 +6,18 @@ class GuestBook
 {
 
     protected $records = [];
-    private $path = '';
+    private $path = __DIR__ . '/../gb.data';
+    private $data = '';
 
-    public function __construct($path)
+    public function __construct()
     {
-        $this->path = file($path, FILE_IGNORE_NEW_LINES);
+        $this->data = file($this->path, FILE_IGNORE_NEW_LINES);
     }
 
     public function loadAllRecords()
     {
         $records = [];
-        foreach ($this->path as $line) {
+        foreach ($this->data as $line) {
             $records[] = new GuestBookRecord($line);
         }
         $this->records = $records;
@@ -37,6 +38,6 @@ class GuestBook
         foreach ($this->records as $record) {
             $ret[] = $record->getMessage();
         }
-        file_put_contents(__DIR__ . '/../gb.data',implode(PHP_EOL, $ret));
+        file_put_contents($this->path,implode(PHP_EOL, $ret));
     }
 }

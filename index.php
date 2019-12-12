@@ -3,7 +3,7 @@
 require __DIR__ . '/class/View.php';
 require __DIR__ . '/class/GuestBook.php';
 
-$gb = new GuestBook(__DIR__ . '/gb.data');
+$gb = new GuestBook();
 $gb->loadAllRecords();
 
 $view = new View;
