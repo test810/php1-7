@@ -12,12 +12,12 @@
     <h1>Гостевая книга</h1>
     <?php foreach ($this->data['gb']->getAllRecords() as $record) { ?>
         <article>
-            <?php echo $record->getmessage(); ?>
+            <?php echo $record->getMessage(); ?>
         </article>
         <hr>
     <?php } ?>
 
-    <form action="add.php" method="post">
+    <form action="/add.php" method="post">
         <textarea name="message" id="" cols="30" rows="10"></textarea>
         <button type="submit">Добавить</button>
     </form>
